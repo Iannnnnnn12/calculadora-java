@@ -147,6 +147,22 @@ class Calculadora{
         };
     }
 
+    public double Potencia(double a, double b){
+        return Math.pow(a,b);
+    }
 
+    public double raiz(double a){
+        if (a < 0) throw new IllegalArgumentException("Número negativo.");
+        return Math.sqrt(a);
+    }
 
+    public long factorial(int n){
+        if (n < 0) throw new IllegalArgumentException("Factorial negativo.");
+        long res = 1;
+        for (int i = 2; i <= n; i++) {
+            res *= i;
+        }
+        return res;
+    }
 }
+
