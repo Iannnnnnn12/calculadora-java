@@ -9,6 +9,8 @@ public class Main {
     private static final Scanner escaner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        Calculadora calc = new Calculadora();
+
 
         boolean menuOn = true;
 
@@ -17,8 +19,8 @@ public class Main {
             int opcion = readIn("Escoge una opcion: ");
 
             switch(opcion){
-                case 1 -> OperacionesBasicasMenu();
-                case 2 -> OperacionesAvanzadasMenu();
+                case 1 -> OperacionesBasicasMenu(calc);
+                case 2 -> OperacionesAvanzadasMenu(calc);
                 case 3 -> HistorialMenu();
                 case 0 -> {
                     System.out.println("Saliendo... ¡Hasta luego!");
@@ -166,7 +168,7 @@ public class Main {
 class Calculadora{
 
     public double opBasicas(double a, double b, String op) {
-        return (op){
+        return switch (op){
             case "+" -> a + b;
             case "-" -> a - b;
             case "*" -> a * b;
@@ -178,7 +180,7 @@ class Calculadora{
                 if (b == 0) throw new IllegalArgumentException("Módulo por cero.");
                 yield a % b;
             }
-            default -> throw new IllegalArgumentException("Operacion invalida")
+            default -> throw new IllegalArgumentException("Operacion invalida");
         };
     }
 
