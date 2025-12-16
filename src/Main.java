@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 
@@ -124,9 +126,9 @@ public class Main {
 
     private static void HistorialMenu(){
 
-        boolean back = false;
+        boolean volver = false;
 
-        while (!back){
+        while (!volver){
             System.out.println("\n--- Historial ---");
             System.out.println("1) Ver historial");
             System.out.println("2) Buscar por operador");
@@ -136,6 +138,10 @@ public class Main {
             System.out.println("0) Volver");
 
             int opcion = readIn("Escoge una opcion: ");
+
+            switch(opcion){
+
+            }
         }
 
     }
@@ -222,5 +228,43 @@ class Operacion{
     public String toString() {
         DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return "[" + data.format(f) + "] " + a + " " + operador + " " + b + " = " + result;
+    }
+}
+
+class Historial{
+    ArrayList<Operacion> historial = new ArrayList<>();
+
+    void add (Operacion op){
+        historial.add(op);
+    }
+
+    void printAll(){
+        if (historial.isEmpty()){
+            System.out.println("Historial vacio");
+            return;
+        }
+        for(Operacion operacion : historial){
+            System.out.println(operacion);
+        }
+    }
+
+    void BuscarPorOperador(String op){
+        for (Operacion o : historial){
+            if (o.operador.equals(op)){
+                System.out.println(o);
+            }
+        }
+    }
+
+    void OrdenarResultado(){
+        historial.sort(Comparator.comparingDouble(o -> o.result));
+    }
+
+    void OrdenarFecha(){
+        historial.sort((a,b) -> b.data.compareTo(a.data));
+    }
+
+    void Limpiar(){
+        historial.clear();
     }
 }
