@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static Scanner escaner = new Scanner(System.in);
+    private static final Scanner escaner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
@@ -86,6 +86,20 @@ public class Main {
     }
 
     private static void HistorialMenu(){
+
+        boolean back = false;
+
+        while (!back){
+            System.out.println("\n--- Historial ---");
+            System.out.println("1) Ver historial");
+            System.out.println("2) Buscar por operador");
+            System.out.println("3) Ordenar por resultado");
+            System.out.println("4) Ordenar por fecha");
+            System.out.println("5) Borrar historial");
+            System.out.println("0) Volver");
+
+            int opcion = readIn("Escoge una opcion: ");
+        }
 
     }
 
