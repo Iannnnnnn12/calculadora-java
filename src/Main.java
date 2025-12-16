@@ -43,7 +43,7 @@ public class Main {
         System.out.println("==============================");
     }
 
-    private static void OperacionesBasicasMenu(){
+    private static void OperacionesBasicasMenu(Calculadora calc){
         String[] ops = { "+", "-", "*", "/", "%" };
 
         boolean volver = false;
@@ -69,10 +69,16 @@ public class Main {
             double a = readDouble("Primer numero: ");
             double b = readDouble("Segundo numero: ");
 
+            try{
+                double result = calc.opBasicas(a, b, ops[opcion -1]);
+                System.out.println("Resultado: " + result);
+            }catch (IllegalAccessError e){
+                System.out.println("Error: " +e.getMessage());
+            }
         }
     }
 
-    private static void OperacionesAvanzadasMenu(){
+    private static void OperacionesAvanzadasMenu(Calculadora calc){
 
         boolean volver = false;
 
@@ -84,6 +90,32 @@ public class Main {
             System.out.println("0) Volver");
 
             int opcion = readIn("Escoge una opcion: ");
+
+            try{
+                switch (opcion){
+                    case 1 -> {
+                        double a = readDouble("Base: ");
+                        double b = readDouble("Exponente: ");
+                        double result = calc.Potencia(a,b);
+                        System.out.println("Resultado: "+result);
+
+                    }
+                    case 2 -> {
+                        double a = readDouble("Numero: ");
+                        double result = calc.raiz(a);
+                        System.out.println("Resultado: "+result);
+                    }
+                    case 3 -> {
+                        int n = readIn("Numero entero: ");
+                        long result = calc.factorial(n);
+                        System.out.println("Resultado: "+result);
+                    }
+                    case 0 -> volver = true;
+                    default -> System.out.println("Opcion no valida");
+                }
+            }catch (IllegalAccessError e){
+                System.out.println("Error: "+ e.getMessage());
+            }
         }
 
     }
