@@ -14,9 +14,9 @@ public class Main {
             int opcion = readIn("Escoge una opcion: ");
 
             switch(opcion){
-                case 1 -> OperacionesBasicas();
-                case 2 -> OperacionesAvanzadas();
-                case 3 -> Historial();
+                case 1 -> OperacionesBasicasMenu();
+                case 2 -> OperacionesAvanzadasMenu();
+                case 3 -> HistorialMenu();
                 case 0 -> {
                     System.out.println("Saliendo... ¡Hasta luego!");
                     menuOn = false;
@@ -26,12 +26,6 @@ public class Main {
             }
 
         }while (menuOn);
-
-
-
-
-
-
 
     }
 
@@ -46,15 +40,15 @@ public class Main {
         System.out.println("==============================");
     }
 
-    private static void OperacionesBasicas(){
+    private static void OperacionesBasicasMenu(){
 
     }
 
-    private static void OperacionesAvanzadas(){
+    private static void OperacionesAvanzadasMenu(){
 
     }
 
-    private static void Historial(){
+    private static void HistorialMenu(){
 
     }
 
