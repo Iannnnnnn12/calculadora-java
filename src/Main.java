@@ -41,7 +41,30 @@ public class Main {
     }
 
     private static void OperacionesBasicasMenu(){
+        String[] ops = { "+", "-", "*", "/", "%" };
 
+        boolean volver = false;
+        while(!volver){
+            System.out.println("Operaciones basicas: ");
+            for (int i = 0; i < ops.length; i++){
+                System.out.println((i+1) + ") " + ops[i]);
+            }
+            System.out.println("0) Volver");
+
+            int opcion = readIn("Escoge una opcion: ");
+
+            if (opcion == 0){
+                volver = true;
+                continue;
+            }
+
+            if (opcion < 1 || opcion > ops.length) {
+                System.out.println("Opcion no valida");
+                continue;
+            }
+
+
+        }
     }
 
     private static void OperacionesAvanzadasMenu(){
