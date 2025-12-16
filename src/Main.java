@@ -1,3 +1,6 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 
@@ -166,3 +169,24 @@ class Calculadora{
     }
 }
 
+class Operacion{
+    double a;
+    double b;
+    String operador;
+    double result;
+    LocalDateTime data;
+
+    Operacion(double a, double b, String operador, double result){
+        this.a = a;
+        this.b = b;
+        this.operador = operador;
+        this.result = result;
+        this.data = LocalDateTime.now();
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return "[" + data.format(f) + "] " + a + " " + operador + " " + b + " = " + result;
+    }
+}
