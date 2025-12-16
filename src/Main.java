@@ -11,7 +11,7 @@ public class Main {
 
         do {
             Menu();
-            int opcion =
+            int opcion = readIn("Escoge una opcion: ");
 
         }while (menuOn);
 
@@ -34,5 +34,15 @@ public class Main {
         System.out.println("==============================");
     }
 
-    private static void
+    private static int readIn (String msg){
+        while (true){
+            System.out.print(msg);
+            try{
+                return escaner.nextInt();
+            }catch (Exception e) {
+                System.out.println("Error: introduce un numero entero");
+                escaner.next();
+            }
+        }
+    }
 }
