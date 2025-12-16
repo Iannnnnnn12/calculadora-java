@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -12,6 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         Calculadora calc = new Calculadora();
+        Historial historial = new Historial();
 
 
         boolean menuOn = true;
@@ -21,9 +21,9 @@ public class Main {
             int opcion = readIn("Escoge una opcion: ");
 
             switch(opcion){
-                case 1 -> OperacionesBasicasMenu(calc);
-                case 2 -> OperacionesAvanzadasMenu(calc);
-                case 3 -> HistorialMenu();
+                case 1 -> OperacionesBasicasMenu(calc, historial);
+                case 2 -> OperacionesAvanzadasMenu(calc, historial);
+                case 3 -> HistorialMenu(historial);
                 case 0 -> {
                     System.out.println("Saliendo... ¡Hasta luego!");
                     menuOn = false;
@@ -76,6 +76,7 @@ public class Main {
             try{
                 double result = calc.opBasicas(a, b, ops[opcion -1]);
                 System.out.println("Resultado: " + result);
+                historial.add(new Operacion(a, b, ops[opcion - 1], result));
             }catch (IllegalAccessError e){
                 System.out.println("Error: " +e.getMessage());
             }
@@ -102,17 +103,19 @@ public class Main {
                         double b = readDouble("Exponente: ");
                         double result = calc.Potencia(a,b);
                         System.out.println("Resultado: "+result);
-
+                        historial.add(new Operacion(a,b,"pow", result));
                     }
                     case 2 -> {
                         double a = readDouble("Numero: ");
                         double result = calc.raiz(a);
                         System.out.println("Resultado: "+result);
+                        historial.add(new Operacion(a,0,"sqrt", result));
                     }
                     case 3 -> {
                         int n = readIn("Numero entero: ");
                         long result = calc.factorial(n);
                         System.out.println("Resultado: "+result);
+                        historial.add(new Operacion(n,0,"factorial", result));
                     }
                     case 0 -> volver = true;
                     default -> System.out.println("Opcion no valida");
