@@ -47,7 +47,7 @@ public class Main {
         System.out.println("==============================");
     }
 
-    private static void OperacionesBasicasMenu(Calculadora calc){
+    private static void OperacionesBasicasMenu(Calculadora calc, Historial historial){
         String[] ops = { "+", "-", "*", "/", "%" };
 
         boolean volver = false;
@@ -82,7 +82,7 @@ public class Main {
         }
     }
 
-    private static void OperacionesAvanzadasMenu(Calculadora calc){
+    private static void OperacionesAvanzadasMenu(Calculadora calc, Historial historial){
 
         boolean volver = false;
 
@@ -124,7 +124,7 @@ public class Main {
 
     }
 
-    private static void HistorialMenu(){
+    private static void HistorialMenu(Historial historial){
 
         boolean volver = false;
 
@@ -140,7 +140,26 @@ public class Main {
             int opcion = readIn("Escoge una opcion: ");
 
             switch(opcion){
-
+                case 1 -> historial.printAll();
+                case 2 -> {
+                    System.out.println("Operador: ");
+                    String op = escaner.next();
+                    historial.BuscarPorOperador(op);
+                }
+                case 3 -> {
+                    historial.OrdenarResultado();
+                    System.out.println("Historial Ordenado");
+                }
+                case 4 -> {
+                    historial.OrdenarFecha();
+                    System.out.println("Historial Ordenado");
+                }
+                case 5 -> {
+                    historial.Limpiar();
+                    System.out.println("Historial Borrado");
+                }
+                case 0 -> volver = true;
+                default -> System.out.println("Opcion no valida");
             }
         }
 
