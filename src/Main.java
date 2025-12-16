@@ -63,11 +63,25 @@ public class Main {
                 continue;
             }
 
+            double a = readDouble("Primer numero: ");
+            double b = readDouble("Segundo numero: ");
 
         }
     }
 
     private static void OperacionesAvanzadasMenu(){
+
+        boolean volver = false;
+
+        while(!volver) {
+            System.out.println("\n--- Operaciones avanzadas ---");
+            System.out.println("1) Potencia (a^b)");
+            System.out.println("2) Raíz cuadrada");
+            System.out.println("3) Factorial");
+            System.out.println("0) Volver");
+
+            int opcion = readIn("Escoge una opcion: ");
+        }
 
     }
 
@@ -82,6 +96,18 @@ public class Main {
                 return escaner.nextInt();
             }catch (Exception e) {
                 System.out.println("Error: introduce un numero entero");
+                escaner.next();
+            }
+        }
+    }
+
+    private static double readDouble(String msg){
+        while(true){
+            System.out.println(msg);
+            try{
+                return escaner.nextDouble();
+            }catch (Exception e){
+                System.out.println("Error: Introduce un numero valido");
                 escaner.next();
             }
         }
