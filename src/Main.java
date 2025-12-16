@@ -127,3 +127,26 @@ public class Main {
         }
     }
 }
+
+class Calculadora{
+
+    public double opBasicas(double a, double b, String op) {
+        return (op){
+            case "+" -> a + b;
+            case "-" -> a - b;
+            case "*" -> a * b;
+            case "/" -> {
+                if (b == 0) throw new IllegalArgumentException("División por cero.");
+                yield a / b;
+            }
+            case "%" -> {
+                if (b == 0) throw new IllegalArgumentException("Módulo por cero.");
+                yield a % b;
+            }
+            default -> throw new IllegalArgumentException("Operacion invalida")
+        };
+    }
+
+
+
+}
